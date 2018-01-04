@@ -1,6 +1,0 @@
----
-# common packages
-package:
-  bash-completion: { installed: true }
-  jq: { installed: true }
-  tree: { installed: true }

@@ -1,9 +1,0 @@
-# python
-*.pyc
-*.pyo
-__pycache__
-
-/galaxy_roles
-
-# vagrant
-/.vagrant

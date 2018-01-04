@@ -1,7 +1,0 @@
-# python
-*.pyc
-*.pyo
-__pycache__
-
-# vagrant
-/.vagrant

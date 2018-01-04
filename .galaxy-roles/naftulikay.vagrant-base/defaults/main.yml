@@ -1,4 +1,0 @@
----
-# allow a user to change the shared folder
-vagrant_shared_folder: /vagrant
-vagrant_utility_packages: []

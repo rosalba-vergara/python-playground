@@ -1,3 +1,0 @@
----
-python_user: "{{ vagrant_user }}"
-vagrant_user: vagrant

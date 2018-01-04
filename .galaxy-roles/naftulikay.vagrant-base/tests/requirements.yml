@@ -1,6 +1,0 @@
----
-# test dependencies
-- name: degoss
-  src: naftulikay.degoss
-
-- src: naftulikay.time

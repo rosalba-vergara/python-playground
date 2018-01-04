@@ -1,7 +1,0 @@
----
-command:
-  # executing pyenv version should return the specified python version
-  'sudo -Hiu vagrant /home/vagrant/.pyenv/bin/pyenv version':
-    exit-status: 0
-    stdout:
-      - 2.7.13
