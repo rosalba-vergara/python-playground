@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  name: vagrant-python-dev
+  version: 'v1.0.0'
+  author: Naftuli Kay
+  description: Install and configure a Python development environment in a Vagrant machine.
+
+  license: MIT
+
+  min_ansible_version: 2.2
+
+  platforms:
+    - name: EL
+      versions: [7]
+    - name: Ubuntu
+      versions: [trusty, xenial]
+
+  galaxy_tags: [python,vagrant]
+
+dependencies:
+  - role: naftulikay.python-dev
+  - role: naftulikay.vagrant-base

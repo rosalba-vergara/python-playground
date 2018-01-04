@@ -1,0 +1,39 @@
+---
+# load variables per os and release
+- name: include os facts
+  include: discover/os.yml
+
+- name: load variables
+  include_vars: "{{ vars_list }}"
+  with_items:
+    - "{{ os_name }}/common.yml"
+    - "{{ os_name }}/{{ os_release }}.yml"
+  loop_control: { loop_var: vars_list }
+
+# create magic cd to /vagrant on login
+- name: insert magic cd
+  template:
+    src: vagrant-magic.sh.j2
+    dest: /etc/profile.d/vagrant-magic.sh
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+
+# update cache on ubuntu
+- name: update cache
+  apt: update_cache=yes cache_valid_time=2700
+  when: os_name == "ubuntu"
+  become: true
+
+# install epel on redhat
+- name: install epel
+  package: name=epel-release state=present
+  when: os_name == "redhat"
+  become: true
+
+# install utility packages
+- name: install utility packages
+  package: name={{ item }} state=present
+  with_items: "{{ vagrant_utility_packages }}"
+  become: true

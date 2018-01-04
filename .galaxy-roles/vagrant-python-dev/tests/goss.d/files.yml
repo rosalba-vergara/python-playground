@@ -1,0 +1,15 @@
+---
+file:
+  '/home/vagrant/.bashrc':
+    exists: true
+    contains:
+      # check for pyenv root being set
+      - /export PYENV_ROOT=\"\$HOME/\.pyenv\"/
+      # check for path modifications
+      - /export PATH=\"\$PYENV_ROOT/bin\:\$PATH\"/
+      # check for init
+      - /\$\(pyenv init \-\)/
+      # check for magic cd
+      - /cd ['"]?/vagrant['"]?/
+  '/home/vagrant/.pyenv': { exists: true }
+  '/home/vagrant/.pyenv/versions/2.7.13': { exists: true }

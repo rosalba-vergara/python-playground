@@ -1,0 +1,29 @@
+---
+- name: create container user
+  hosts: localhost
+  vars:
+    container_user: vagrant
+  tasks:
+    - name: create user
+      user: name={{ container_user }} shell=/bin/bash comment="Container User" state=present
+
+    - name: create vagrant mount point
+      file: path=/vagrant owner={{ container_user }} group={{ container_user }} state=directory mode=0755
+
+- name: execute role
+  hosts: localhost
+  roles:
+    - role: vagrant-base
+
+- name: execute tests
+  hosts: localhost
+  vars:
+    vagrant_shell: bash
+    bash_path: /usr/bin/bash
+  roles:
+    - role: degoss
+      degoss_debug: true
+      goss_file: goss.yml
+      goss_addtl_dirs: [goss.d]
+      goss_env_vars:
+        distro: "{{ ansible_distribution | lower }}"

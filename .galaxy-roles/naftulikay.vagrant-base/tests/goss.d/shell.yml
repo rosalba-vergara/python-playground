@@ -1,0 +1,22 @@
+---
+package:
+  bash:
+    installed: true
+
+file:
+  # test that the magic exists
+  /etc/profile.d/vagrant-magic.sh:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
+    contains:
+      - "if [ $(history 2>/dev/null | wc -l) -eq 0 ]; then"
+      - "cd \"/vagrant\""
+
+user:
+  vagrant:
+    exists: true
+    home: /home/vagrant
+    shell: /bin/bash
